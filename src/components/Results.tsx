@@ -1,11 +1,12 @@
 import React from "react";
+import Dollar from "./svg/Dollar";
 
-function Results({ tip, people, bill, tipAmount, resetFunc }: any) {
+function Results({ people, bill, tipAmount, resetFunc }: any) {
     tipAmount = tipAmount / 100;
     var totalTip: any;
     var total: any;
 
-    if (people > 0) {
+    if (people > 0 && tipAmount >= 0) {
         totalTip = (bill * tipAmount) / people;
         total = (bill * tipAmount + bill) / people;
     } else {
@@ -18,13 +19,28 @@ function Results({ tip, people, bill, tipAmount, resetFunc }: any) {
 
     return (
         <div className="results">
-            <p>
-                {tip} {people} {bill} {tipAmount}
-            </p>
-            <div className="total__tip">{totalTip}</div>
-            <div className="total__amount">{total}</div>
-            <div className="resetBtn" onClick={() => resetFunc()}>
-                <p>Reset</p>
+            <div className="total__tip">
+                <div className="per-person">
+                    <p className="amount">Tip Amount</p>
+                    <p className="person">/ person</p>
+                </div>
+                <div className="total">
+                    <Dollar></Dollar>
+                    {totalTip}
+                </div>
+            </div>
+            <div className="total__amount">
+                <div className="per-person">
+                    <p className="amount">Tip Amount</p>
+                    <p className="person">/ person</p>
+                </div>
+                <div className="total">
+                    <Dollar></Dollar>
+                    {total}
+                </div>
+            </div>
+            <div className="reset-btn" onClick={() => resetFunc()}>
+                <p>RESET</p>
             </div>
         </div>
     );

@@ -53,8 +53,7 @@ function App() {
                     getClickedBtn={getClickedBtn}
                 ></Inputs>
                 <Results
-                    tip={tip} //
-                    tipAmount={tipAmount}
+                    tipAmount={tipAmount} //
                     people={people}
                     bill={bill}
                     resetFunc={resetFunc}

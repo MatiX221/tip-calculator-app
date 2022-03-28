@@ -1,27 +1,34 @@
 import React from "react";
 import Button from "./Button";
+import Dollar from "./svg/Dollar";
+import Person from "./svg/Person";
 
 function Inputs({ bill, people, tip, getBillAmount, getPeopleAmount, getTipAmount, getClickedBtn }: any) {
     return (
         <div className="inputs">
             <div className="bill">
-                <input
-                    className="input"
-                    type="number"
-                    step="0.01" //
-                    value={bill === 0 ? "" : bill}
-                    onInput={(event: any) => getBillAmount(event.target.value)}
-                    placeholder="0"
-                />
+                <p>Bill</p>
+                <div className="input__container">
+                    <Dollar></Dollar>
+                    <input
+                        className="input"
+                        type="number"
+                        step="0.01" //
+                        value={bill === 0 ? "" : bill}
+                        onInput={(event: any) => getBillAmount(event.target.value)}
+                        placeholder="0"
+                    />
+                </div>
             </div>
             <div className="tip">
+                <p>Select Tip %</p>
                 <Button getClickedBtn={getClickedBtn} value="5"></Button>
                 <Button getClickedBtn={getClickedBtn} value="10"></Button>
                 <Button getClickedBtn={getClickedBtn} value="15"></Button>
                 <Button getClickedBtn={getClickedBtn} value="25"></Button>
                 <Button getClickedBtn={getClickedBtn} value="50"></Button>
                 <input
-                    className="tip"
+                    className="tip__input"
                     type="number"
                     step="1" //
                     value={tip === 0 ? "" : tip}
@@ -30,14 +37,18 @@ function Inputs({ bill, people, tip, getBillAmount, getPeopleAmount, getTipAmoun
                 />
             </div>
             <div className="people">
-                <input
-                    className="input"
-                    type="number"
-                    step="1" //
-                    value={people === 0 ? "" : people}
-                    onInput={(event: any) => getPeopleAmount(event.target.value)}
-                    placeholder="0"
-                />
+                <p>Number of People</p>
+                <div className="input__container">
+                    <Person></Person>
+                    <input
+                        className="input"
+                        type="number"
+                        step="1" //
+                        value={people === 0 ? "" : people}
+                        onInput={(event: any) => getPeopleAmount(event.target.value)}
+                        placeholder="0"
+                    />
+                </div>
             </div>
         </div>
     );
